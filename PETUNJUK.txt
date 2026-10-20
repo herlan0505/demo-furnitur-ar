@@ -1,0 +1,29 @@
+DEMO FURNITUR 3D + AR — PETUNJUK PEMULA
+
+ISI FOLDER
+- index.html: halaman demo.
+- model.glb: file model 3D Anda (perlu Anda masukkan sendiri).
+
+LANGKAH 1 — MASUKKAN MODEL
+1. Ekstrak ZIP ini ke sebuah folder.
+2. Salin file GLB furnitur Anda ke folder yang sama dengan index.html.
+3. Ganti nama file GLB Anda menjadi: model.glb
+   Pastikan namanya tepat model.glb, bukan model.glb.glb.
+
+LANGKAH 2 — TES DI LAPTOP
+1. Upload folder ini ke hosting HTTPS, misalnya GitHub Pages.
+2. Buka link halaman index.html yang sudah diterbitkan.
+3. Pastikan model 3D muncul dan bisa diputar.
+   Catatan: membuka index.html langsung dari folder komputer (file://) bisa menyebabkan beberapa fitur atau pemuatan model tidak bekerja seperti saat di-host.
+
+LANGKAH 3 — GANTI LINK BELI
+1. Buka index.html menggunakan Notepad.
+2. Cari https://shopee.co.id/
+3. Ganti URL tersebut dengan link produk furnitur yang benar.
+4. Simpan lalu unggah kembali index.html.
+
+PENTING
+- Model harus bernama model.glb dan berada di folder yang sama dengan index.html.
+- File GLB harus dapat diakses publik melalui halaman demo.
+- Tombol AR hanya berfungsi pada perangkat/browser yang kompatibel. Infinix Anda yang sebelumnya menunjukkan “tidak kompatibel” kemungkinan hanya akan menampilkan mode 3D.
+- Jangan unggah informasi pribadi atau file yang tidak ingin dibagikan secara publik.
