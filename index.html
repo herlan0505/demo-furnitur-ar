@@ -1,49 +1,120 @@
+
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Furnitur 3D + AR</title>
+  <title>Meja TV Minimalist</title>
+
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
   <style>
     * { box-sizing: border-box; }
-    body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f3; color: #222; }
-    header { background: #fff; border-bottom: 1px solid #e8e8e5; padding: 22px 16px; }
-    .wrap { width: min(100% - 32px, 1000px); margin: 0 auto; }
-    header h1 { margin: 0 0 6px; font-size: 25px; }
-    header p { margin: 0; color: #666; line-height: 1.45; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f3;
+      color: #222;
+    }
+
+    .wrap {
+      width: min(100% - 32px, 1000px);
+      margin: 0 auto;
+    }
+
     main { padding: 24px 0 40px; }
-    .card { background: white; border-radius: 18px; padding: 18px; box-shadow: 0 4px 18px #0000000a; }
-    model-viewer { display: block; width: 100%; height: min(60vh, 500px); min-height: 300px; background: #f7f7f6; border-radius: 12px; }
-    h2 { margin: 18px 0 8px; font-size: 23px; }
-    .price { font-weight: bold; font-size: 18px; margin: 0 0 12px; }
-    .description { color: #555; line-height: 1.55; }
-    .buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    button, a.button { border: 0; border-radius: 10px; padding: 13px 16px; font-size: 15px; cursor: pointer; text-decoration: none; display: inline-block; }
-    button { color: white; background: #222; }
-    a.button { color: #222; background: #e8e8e5; }
-    .hint { font-size: 13px; color: #777; line-height: 1.45; margin-top: 13px; }
-    .error { background: white; border-radius: 14px; padding: 22px; line-height: 1.6; }
-    footer { text-align: center; color: #777; font-size: 12px; padding: 18px 0 28px; }
+
+    .card {
+      background: white;
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 4px 18px #0000000a;
+    }
+
+    model-viewer {
+      display: block;
+      width: 100%;
+      height: min(60vh, 500px);
+      min-height: 300px;
+      background: #f7f7f6;
+      border-radius: 12px;
+    }
+
+    h2 {
+      margin: 18px 0 8px;
+      font-size: 23px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    button, a.button {
+      border: 0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    button {
+      color: white;
+      background: #222;
+    }
+
+    button:hover {
+      background: #444;
+    }
+
+    a.button {
+      color: white;
+      background: #2457C5;
+      box-shadow: 0 4px 0 #173D91;
+    }
+
+    a.button:hover {
+      background: #1947AA;
+      transform: translateY(-1px);
+    }
+
+    a.button:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #173D91;
+    }
+
+    .hint {
+      font-size: 13px;
+      color: #777;
+      line-height: 1.45;
+      margin-top: 13px;
+    }
+
+    @media (max-width: 480px) {
+      .card { padding: 12px; }
+      model-viewer { min-height: 260px; }
+      .buttons { flex-direction: column; }
+      button, a.button { width: 100%; }
+    }
   </style>
 </head>
+
 <body>
-<header><div class="wrap">
-  <h1>Furnitur 3D + AR</h1>
-  <p>Lihat produk dalam 3D dan coba tempatkan di ruangan Anda jika perangkat mendukung AR.</p>
-</div></header>
 <main class="wrap">
   <section id="productArea"></section>
 </main>
-<footer class="wrap">Demo furnitur 3D + AR</footer>
+
 <script>
-/*
-  CARA MENAMBAH PRODUK:
-  1. Upload file GLB ke folder models di repository.
-  2. Tambahkan produk baru ke daftar products di bawah.
-  3. Isi name, price, model, buyUrl, dan description.
-  4. Link langsung ke produk menggunakan ?product=ID
-*/
 const products = [
   {
     id: "livingroom-table",
@@ -78,6 +149,7 @@ const area = document.getElementById("productArea");
 
 const card = document.createElement("article");
 card.className = "card";
+
 const viewer = document.createElement("model-viewer");
 viewer.setAttribute("src", product.model);
 viewer.setAttribute("alt", "Model 3D " + product.name);
@@ -92,40 +164,45 @@ viewer.setAttribute("loading", "eager");
 
 const title = document.createElement("h2");
 title.textContent = product.name;
-const price = document.createElement("p");
-price.className = "price";
-price.textContent = product.price;
-const description = document.createElement("p");
-description.className = "description";
-description.textContent = product.description;
+
 const buttons = document.createElement("div");
 buttons.className = "buttons";
+
 const arButton = document.createElement("button");
 arButton.type = "button";
 arButton.textContent = "Lihat di Ruangan Saya (AR)";
+
 arButton.addEventListener("click", async () => {
   if (!viewer.loaded) {
     alert("Model sedang dimuat. Tunggu sebentar, lalu coba lagi.");
     return;
   }
+
   if (!viewer.canActivateAR) {
     alert("AR tidak tersedia pada perangkat/browser ini. Anda tetap bisa memutar dan memperbesar model 3D.");
     return;
   }
-  try { await viewer.activateAR(); }
-  catch (e) { alert("AR tidak dapat dibuka. Tampilan 3D tetap bisa digunakan."); }
+
+  try {
+    await viewer.activateAR();
+  } catch (e) {
+    alert("AR tidak dapat dibuka. Tampilan 3D tetap bisa digunakan.");
+  }
 });
+
 const buy = document.createElement("a");
 buy.className = "button";
 buy.href = product.buyUrl;
 buy.target = "_blank";
 buy.rel = "noopener";
 buy.textContent = "Beli Produk";
+
 const hint = document.createElement("p");
 hint.className = "hint";
 hint.textContent = "Jika model tidak muncul, periksa nama dan lokasi file GLB di repository.";
+
 buttons.append(arButton, buy);
-card.append(viewer, title, price, description, buttons, hint);
+card.append(viewer, title, buttons, hint);
 area.appendChild(card);
 </script>
 </body>
