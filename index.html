@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Meja TV Minimalist</title>
+  <title>Produk Furnitur</title>
 
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
 
@@ -23,10 +23,12 @@
       margin: 0 auto;
     }
 
-    main { padding: 24px 0 40px; }
+    main {
+      padding: 24px 0 40px;
+    }
 
     .card {
-      background: white;
+      background: #fff;
       border-radius: 18px;
       padding: 18px;
       box-shadow: 0 4px 18px #0000000a;
@@ -69,7 +71,7 @@
     }
 
     button {
-      color: white;
+      color: #fff;
       background: #222;
     }
 
@@ -78,7 +80,7 @@
     }
 
     a.button {
-      color: white;
+      color: #fff;
       background: #2457C5;
       box-shadow: 0 4px 0 #173D91;
     }
@@ -102,9 +104,18 @@
 
     @media (max-width: 480px) {
       .card { padding: 12px; }
-      model-viewer { min-height: 260px; }
-      .buttons { flex-direction: column; }
-      button, a.button { width: 100%; }
+
+      model-viewer {
+        min-height: 260px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      button, a.button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -145,8 +156,8 @@ const products = [
 const params = new URLSearchParams(window.location.search);
 const requestedId = params.get("product");
 const product = products.find(item => item.id === requestedId) || products[0];
-const area = document.getElementById("productArea");
 
+const area = document.getElementById("productArea");
 const card = document.createElement("article");
 card.className = "card";
 
